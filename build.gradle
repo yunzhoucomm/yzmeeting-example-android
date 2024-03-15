@@ -41,7 +41,7 @@ allprojects {
         maven { url 'https://maven.aliyun.com/repository/spring' }
         maven { url 'https://mirrors.cloud.tencent.com/nexus/repository/maven-public/' }
         maven { url 'https://maven.aliyun.com/nexus/content/repositories/jcenter' }
-        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+        maven{ url 'https://maven.aliyun.com/nexus/content/groups/public/'}
         mavenLocal()
         mavenCentral()
 
