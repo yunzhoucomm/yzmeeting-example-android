@@ -1,4 +1,4 @@
-rootProject.name = "yzmeeting-demo-android"
+rootProject.name = "yzmeeting-example-android"
 include ':app'
 
 if(USE_DEMO.toBoolean()){
