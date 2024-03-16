@@ -26,21 +26,37 @@
 
 ### 开发环境要求
 
-JDK版本：11
-Gradle版本：6.1.1
-Gradle插件版本：4.0.1
+
+#### Android Studio环境配置  
+
+
+JDK版本：11  （Amazon Corretto version）
+
+Gradle版本：6.1.1  
+
+Gradle插件版本：4.0.1  
+  
+
+#### 其他环境配置
+
+Node版本：建议安装LTS （长期维护）版本
+
 
 以上为推荐配置，若项目本身构建时依赖的JDK版本为11以下，请先阅读常见问题说明，再进行编译。
-注意，**编译运行Demo只需看获取node_modules内容即可**。
+注意，**编译运行Demo只需看获取node_modules内容即可**。  
 
 ### 获取node_modules
 
-
-打开示例工程，从https://github.com/yunzhoucomm/yzmeeting-sdk-android 下载package.json, react-native.config.js文件并拷贝到主工程的根目录下。（和`settings.gradle`平级）
-
-打开命令行，cd到根目录下，执行`yarn install`， 等执行完毕则会在根目录下生成node_modules文件夹。
+打开终端，执行`yarn install`， 等执行完毕则会在根目录下生成node_modules文件夹。
+如果没有安装yarn命令请先按以下步骤安装yarn。
 
 #### Mac环境
+
+安装HomeBrew
+
+```java
+/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
+```
 
 使用HomeBrew安装yarn命令：
 
@@ -48,15 +64,17 @@ Gradle插件版本：4.0.1
 brew install yarn
 ```
 
-没有HomeBrew的话通过以下命令先安装
+安装node：
 
-```java
-/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
 ```
+brew install
+
+```
+
 
 #### Windows环境
 
-先安装Node.js，从[官网](https://nodejs.org/en)下载最新的LTS版本。输入命令`node -v`，`npm -v`检查是否安装成功。
+先安装Node.js，从[官网](https://nodejs.org/en)下载最新的**LTS**版本。输入命令`node -v`，`npm -v`检查是否安装成功。
 
 再安装yarn，输入命令`yarn -v`检查是否安装成功。
 
@@ -64,17 +82,17 @@ brew install yarn
 npm install -g yarn
 ```
 
-如果因下载较慢或其他原因，也可以先联系音视频管理员获取当前版本的node_modules文件夹。
+首次编译需要下载相关依赖，请耐心等待，或者也可以先联系音视频管理员获取当前版本的node_modules。
 
 ### 获取会议服务器地址
 如果自己部署会议服务器，会议服务器地址为自己部署的会议服务器地址
 如果需要使用云舟会议服务器，请联系支持人员
 
-## 手动集成步骤
+## 手动集成步骤  
 
-### 导入aar包和所需的so文件
+### 导入aar包和运行必需的文件
 
-将示例工程内的aar文件和so文件（`/yzmeeting-demo-android/app/libs/`）拷入到主工程的libs目录下。
+将示例工程内的aar文件和so文件（`/yzmeeting-example-android/app/libs/`）拷入到主工程的libs目录下。
 
 ```
 ├── libs
@@ -82,6 +100,8 @@ npm install -g yarn
 │   └── arm64-v8a
 │       └── libjsc.so
 ```
+
+从https://github.com/yunzhoucomm/yzmeeting-sdk-android下载package.json, react-native.config.js文件并拷贝到主工程的根目录下。（和`settings.gradle`平级）
 
 
 ### 添加依赖
@@ -93,7 +113,7 @@ apply from: file("node_modules/@react-native-community/cli-platform-android/nati
 ```
 
 
-参考示例程序里/yzmeeting-demo-android/app的build.gradle，添加aar依赖
+参考示例程序里/yzmeeting-example-android/app的build.gradle，添加aar依赖
 
 ```java
 dependencies {
@@ -166,7 +186,7 @@ MeetingOptions参数说明：
 | 参数           | 含义                                                    |
 | :------------- | ------------------------------------------------------- |
 | entryType       | 标识创建或加入会议，创建会议传create， 加入会议传join   |
-| userInfo        | 设置参会人信息，构造参数依次为用户id， 用户名，用户头像(头像静态资源地址，不填只能显示默认头像) |
+| userInfo        | 设置参会人信息，构造参数依次为用户id， 用户名，用户头像(头像静态资源地址，不填显示默认头像) |
 | serverUrl       | 设置会议服务器地址                                      |
 
 entryType参数传值说明：
@@ -181,12 +201,24 @@ public static final String MEET_CONFIG_PAGE_ENTRY_VALUE_JOIN = "join";
 # 常见问题
 ## Android
 
-1、Mac编译报错
+1、问题描述：Mac编译报错
 
 ```
 > Cannot run program “node”: error=2, No such file or directory
 ```
 
-常见为项目使用了JDK8等低于11的版本构建的，可以使用命令行打开Android Studio，`open '/Applications/Android Studio Fox.app’`。
-若不生效，可能是由于Android Studio版本的兼容性问题，请下载Arctic Fox版本。
+解决方法：
+（1）先退出Android Studio，然后用命令行打开：`open '/Applications/Android Studio Fox.app’`。若还是有报错请看下一步。
+（2）若Gradle版本低于推荐配置，请升级Gradle版本并clean Project后再尝试。
+
+2、问题描述：编译成功，但是无法安装到手机上
+
+解决方法：
+在app的build.gradle里增加以下配置：
+
+```
+packagingOptions {
+    exclude 'AndroidManifest.xml'
+}
+```
 
