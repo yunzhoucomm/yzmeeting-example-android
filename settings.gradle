@@ -2,14 +2,14 @@ rootProject.name = "yzmeeting-example-android"
 include ':app'
 
 if(USE_DEMO.toBoolean()){
+    include ':react-native-webrtc'
+    project(':react-native-webrtc').projectDir = new File('node_modules/@yunzhoukit/react-native-webrtc/android')
+
     include ':react-native-orientation-locker'
     project(':react-native-orientation-locker').projectDir = new File('node_modules/@yunzhoukit/react-native-orientation-locker/android')
 
     include ':react-native-audio-toolkit'
     project(':react-native-audio-toolkit').projectDir = new File('node_modules/@yunzhoukit/react-native-audio-toolkit/android')
-
-    include ':react-native-webrtc'
-    project(':react-native-webrtc').projectDir = new File('node_modules/@livekit/react-native-webrtc/android')
 
     include ':yunzhou-react-native'
     project(':yunzhou-react-native').projectDir = new File('node_modules/@yunzhoukit/yunzhou-react-native/android')
