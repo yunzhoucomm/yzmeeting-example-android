@@ -42,7 +42,7 @@ Gradle插件版本：4.0.1
 Node版本：建议安装LTS （长期维护）版本
 
 
-以上为推荐配置，若项目本身构建时依赖的JDK版本为11以下，请先阅读常见问题说明，再进行编译。
+Gradle版本为使用JDK11构建时的最低配置，若项目当前依赖的JDK版本为11以下，请先阅读常见问题说明，再进行编译。
 注意，**编译运行Demo只需看获取node_modules内容即可**。  
 
 ### 获取node_modules
@@ -68,13 +68,12 @@ brew install yarn
 
 ```
 brew install
-
 ```
 
 
 #### Windows环境
 
-先安装Node.js，从[官网](https://nodejs.org/en)下载最新的**LTS**版本。输入命令`node -v`，`npm -v`检查是否安装成功。
+先安装Node.js，从[Node.js官网](https://nodejs.org/en)下载最新的**LTS**版本。输入命令`node -v`，`npm -v`检查是否安装成功。
 
 再安装yarn，输入命令`yarn -v`检查是否安装成功。
 
@@ -101,7 +100,7 @@ npm install -g yarn
 │       └── libjsc.so
 ```
 
-从https://github.com/yunzhoucomm/yzmeeting-sdk-android 下载package.json, react-native.config.js文件并拷贝到主工程的根目录下。（和`settings.gradle`平级）
+从[yzmeeting-sdk-android](https://github.com/yunzhoucomm/yzmeeting-sdk-android)获取最新的package.json, react-native.config.js文件并拷贝到主工程的根目录下。（和`settings.gradle`平级）
 
 
 ### 添加依赖
@@ -125,11 +124,9 @@ dependencies {
 
 ```
 dependencies {
-
   if(USE_DEMO.toBoolean()){
 		 // …
 	}
-
 }
 ```
 
@@ -193,7 +190,6 @@ entryType参数传值说明：
 public static final String MEET_CONFIG_PAGE_ENTRY_VALUE_CREATE = "create"; 
 // 加入会议
 public static final String MEET_CONFIG_PAGE_ENTRY_VALUE_JOIN = "join";
-
 ```
 
 # 常见问题
@@ -205,8 +201,10 @@ public static final String MEET_CONFIG_PAGE_ENTRY_VALUE_JOIN = "join";
 > Cannot run program “node”: error=2, No such file or directory
 ```
 
-解决方法：
-（1）先退出Android Studio，然后用命令行打开：`open '/Applications/Android Studio Fox.app’`。若还是有报错请看下一步。
+解决方法：  
+
+（1）先退出Android Studio，然后用命令行打开：`open '/Applications/Android Studio Fox.app’`。若还是有报错请看下一步。  
+
 （2）若Gradle版本低于推荐配置，请升级Gradle版本并clean Project后再尝试。
 
 2、问题描述：编译成功，但是无法安装到手机上
