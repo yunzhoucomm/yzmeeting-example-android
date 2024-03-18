@@ -137,8 +137,8 @@ dependencies {
 在`packagingOptions`里排除以下内容
 ```java
 packagingOptions {
-     exclude 'META-INF/minyu_livekit-react-native_debug.kotlin_module'
-     exclude 'META-INF/minyu_livekit-react-native_release.kotlin_module'
+     exclude 'META-INF/yunzhoukit_yunzhou-react-native_debug.kotlin_module'
+     exclude 'META-INF/yunzhoukit_yunzhou-react-native_release.kotlin_module'
      exclude 'META-INF/livekitreactnative_debug.kotlin_module'
      exclude 'META-INF/livekitreactnative_release.kotlin_module'
      exclude 'META-INF/audioswitch_release.kotlin_module'
