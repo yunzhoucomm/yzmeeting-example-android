@@ -101,7 +101,7 @@ npm install -g yarn
 │       └── libjsc.so
 ```
 
-从https://github.com/yunzhoucomm/yzmeeting-sdk-android下载package.json, react-native.config.js文件并拷贝到主工程的根目录下。（和`settings.gradle`平级）
+从https://github.com/yunzhoucomm/yzmeeting-sdk-android 下载package.json, react-native.config.js文件并拷贝到主工程的根目录下。（和`settings.gradle`平级）
 
 
 ### 添加依赖
