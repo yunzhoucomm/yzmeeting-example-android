@@ -50,8 +50,8 @@ if(USE_DEMO.toBoolean()){
     include ':react-native-async-storage_async-storage'
     project(':react-native-async-storage_async-storage').projectDir = new File('node_modules/@react-native-async-storage/async-storage/android')
 } else {
-    include ':YunZhouMeeting'
-    project(':YunZhouMeeting').projectDir = new File('../../SDK/YunZhouMeeting')
+    include ':YunzhouMeeting'
+    project(':YunzhouMeeting').projectDir = new File('../../SDK/YunzhouMeeting')
 }
 
 apply from: file("node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)

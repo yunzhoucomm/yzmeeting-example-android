@@ -4,7 +4,7 @@ package com.yunzhou.yunzhoumeeting;
 import android.app.Activity;
 import android.os.Bundle;
 
-import com.yunzhou.yunzhoumeeting.sdk.YunZhouMeetingAPI;
+import com.yunzhou.yunzhoumeeting.sdk.YunzhouMeetingAPI;
 import com.yunzhou.yunzhoumeeting.sdk.base.Constant;
 import com.yunzhou.yunzhoumeeting.sdk.bean.MeetingOptions;
 import com.yunzhou.yunzhoumeeting.sdk.bean.User;
@@ -20,7 +20,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        YunZhouMeetingAPI.getInstance().init(this);
+        YunzhouMeetingAPI.getInstance().init(this);
         initListener();
     }
 
@@ -39,7 +39,7 @@ public class MainActivity extends Activity {
                 // 会议服务器地址请填入自己部署的会议服务器地址或者向技术支持获取
                 .serverUrl(MEETING_SERVER_URL)
                 .build();
-        YunZhouMeetingAPI.getInstance().start(this, options);
+        YunzhouMeetingAPI.getInstance().start(this, options);
     }
 
 }

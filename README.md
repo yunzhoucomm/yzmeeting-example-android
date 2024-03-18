@@ -95,7 +95,7 @@ npm install -g yarn
 
 ```
 ├── libs
-│   ├── YunZhouMeeting.aar
+│   ├── YunzhouMeeting.aar
 │   └── arm64-v8a
 │       └── libjsc.so
 ```
@@ -116,7 +116,7 @@ apply from: file("node_modules/@react-native-community/cli-platform-android/nati
 
 ```java
 dependencies {
-    implementation(name: 'YunZhouMeeting', ext: 'aar')
+    implementation(name: 'YunzhouMeeting', ext: 'aar')
 }
 ```
 
@@ -157,11 +157,11 @@ packagingOptions {
 
 仅需调用以下方法完成初始化
 ```java
-YunZhouMeetingAPI.getInstance().init(this);
+YunzhouMeetingAPI.getInstance().init(this);
 ```
 ### 启动会议
 ```java
-YunZhouMeetingAPI.getInstance().start(this, options);
+YunzhouMeetingAPI.getInstance().start(this, options);
 ```
 | 参数 | 含义 |
 | :--- | ---- |
