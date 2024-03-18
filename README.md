@@ -139,8 +139,6 @@ dependencies {
 packagingOptions {
      exclude 'META-INF/yunzhoukit_yunzhou-react-native_debug.kotlin_module'
      exclude 'META-INF/yunzhoukit_yunzhou-react-native_release.kotlin_module'
-     exclude 'META-INF/livekitreactnative_debug.kotlin_module'
-     exclude 'META-INF/livekitreactnative_release.kotlin_module'
      exclude 'META-INF/audioswitch_release.kotlin_module'
 }
 ```
