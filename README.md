@@ -190,6 +190,10 @@ entryType参数传值说明：
 public static final String MEET_CONFIG_PAGE_ENTRY_VALUE_CREATE = "create"; 
 // 加入会议
 public static final String MEET_CONFIG_PAGE_ENTRY_VALUE_JOIN = "join";
+// 发起会议
+public static final String MEET_CONFIG_PAGE_ENTRY_VALUE_CALL = "call";
+// 接听会议
+public static final String MEET_CONFIG_PAGE_ENTRY_VALUE_RESPONSE = "response";
 ```
 ### 单人通话
 
@@ -197,14 +201,18 @@ public static final String MEET_CONFIG_PAGE_ENTRY_VALUE_JOIN = "join";
 
 示例：
 ```java
+
+List<User> userList = new ArrayList<>();
+userList.add(new User("", "", ""));
+
 MeetingOptions options = new MeetingOptions.Builder()
     	.serverUrl(Utils.MEETING_SERVER_URL)
     	.entryType(Constant.MEET_CONFIG_PAGE_ENTRY_VALUE_CALL)
-    	.userInfo(new User(String.valueOf(userId), userName, Utils.MEETING_AVATAR_URL))
+    	.userInfo(new User("","",""))
     	.roomName("")
-    	.type(Constant.MEETING_TYPE_SINGLE)
-    	.mode(mode)
-    	.participant(new User(String.valueOf(participantUserId), participantUserName, Utils.MEETING_AVATAR_URL))
+    	.type(Constant.MEETING_TYPE_VOICE)
+    	.mode(Constant.MEETING_MODE_SINGLE)
+    	.participant(userList)
     	.build();
 YunzhouMeetingAPI.getInstance().start(this, options);
 ```
@@ -217,18 +225,18 @@ MeetingOptions参数说明：
 | userInfo        | 设置当前用户信息，构造参数依次为用户id， 用户名，用户头像(头像静态资源地址，不填显示默认头像) |
 | serverUrl       | 设置会议服务器地址                                      |
 | roomName        | 房间名称                                      |
-| type            | 通话类型，单人：single   多人：multiple                                   |
-| mode            | 通话模式：语音：audio    视频：video                                 |
-| participant     | 接听方用户信息，传值参考userInfo                                 |
+| type            | 通话类型：语音：audio    视频：video                                   |
+| mode            | 通话模式：单人：single   多人：multiple                                 |
+| participant     | 接听方用户信息                                 |
 
-
-type参数说明：
-```
-public static final String MEETING_TYPE_SINGLE = "single";
-public static final String MEETING_TYPE_Multiple = "multiple";
-```
 
 mode参数说明：
+```
+public static final String MEETING_MODE_SINGLE = "single";
+public static final String MEETING_MODE_Multiple = "multiple";
+```  
+
+type参数说明：
 ```
 public static final String MEETING_TYPE_VOICE = "audio";
 public static final String MEETING_TYPE_VIDEO = "video";
