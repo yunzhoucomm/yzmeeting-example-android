@@ -191,6 +191,71 @@ public static final String MEET_CONFIG_PAGE_ENTRY_VALUE_CREATE = "create";
 // 加入会议
 public static final String MEET_CONFIG_PAGE_ENTRY_VALUE_JOIN = "join";
 ```
+### 单人通话
+
+#### 发起通话  
+
+示例：
+```java
+MeetingOptions options = new MeetingOptions.Builder()
+    	.serverUrl(Utils.MEETING_SERVER_URL)
+    	.entryType(Constant.MEET_CONFIG_PAGE_ENTRY_VALUE_CALL)
+    	.userInfo(new User(String.valueOf(userId), userName, Utils.MEETING_AVATAR_URL))
+    	.roomName("")
+    	.type(Constant.MEETING_TYPE_SINGLE)
+    	.mode(mode)
+    	.participant(new User(String.valueOf(participantUserId), participantUserName, Utils.MEETING_AVATAR_URL))
+    	.build();
+YunzhouMeetingAPI.getInstance().start(this, options);
+```
+
+MeetingOptions参数说明：
+
+| 参数           | 含义                                                    |
+| :------------- | ------------------------------------------------------- |
+| entryType       | 标识会议类型，发起通话传call，接听通话传response   |
+| userInfo        | 设置当前用户信息，构造参数依次为用户id， 用户名，用户头像(头像静态资源地址，不填显示默认头像) |
+| serverUrl       | 设置会议服务器地址                                      |
+| roomName        | 房间名称                                      |
+| type            | 通话类型，单人：single   多人：multiple                                   |
+| mode            | 通话模式：语音：audio    视频：video                                 |
+| participant     | 接听方用户信息，传值参考userInfo                                 |
+
+
+type参数说明：
+```
+public static final String MEETING_TYPE_SINGLE = "single";
+public static final String MEETING_TYPE_Multiple = "multiple";
+```
+
+mode参数说明：
+```
+public static final String MEETING_TYPE_VOICE = "audio";
+public static final String MEETING_TYPE_VIDEO = "video";
+```
+
+#### 接听通话
+
+示例：
+```java
+MeetingOptions options = new MeetingOptions.Builder()
+        .entryType(Constant.MEET_CONFIG_PAGE_ENTRY_VALUE_RESPONSE)
+        .meetingData(meetingData)
+        .userInfo(new User("", "", ""))
+        .build();
+YunzhouMeetingAPI.getInstance().start(this, options);
+```
+
+MeetingOptions参数说明：
+
+| 参数           | 含义                                                    |
+| :------------- | ------------------------------------------------------- |
+| entryType       | 标识会议类型，发起通话传call，接听通话传response   |
+| userInfo        | 设置当前用户信息，构造参数依次为用户id， 用户名，用户头像(头像静态资源地址，不填显示默认头像) |
+| meetingData     | 透传参数，客户端不需要解析    |
+
+
+
 
 # 常见问题
 ## Android
